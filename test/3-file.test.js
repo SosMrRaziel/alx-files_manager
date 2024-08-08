@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import { expect, use, should, request } from 'chai';
 import chaiHttp from 'chai-http';
 import sinon from 'sinon';

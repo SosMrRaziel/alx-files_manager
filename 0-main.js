@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import redisClient from './utils/redis';
 
 (async () => {

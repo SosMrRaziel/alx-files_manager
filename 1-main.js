@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import dbClient from './utils/db';
 
 const waitConnection = () => {

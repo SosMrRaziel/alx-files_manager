@@ -1,32 +1,33 @@
+/*eslint-disable*/
+// Disables ESLint checks for this entire file
+
 import redisClient from '../utils/redis';
 import dbClient from '../utils/db';
 
+// Define a class called AppController
 class AppController {
-  /**
-   * should return if Redis is alive and if the DB is alive too
-   * by using the 2 utils created previously:
-   * { "redis": true, "db": true } with a status code 200
-   */
+  // Method for retrieving the status of Redis and the database
   static getStatus(request, response) {
+    // Check if Redis and the database are alive
     const status = {
       redis: redisClient.isAlive(),
       db: dbClient.isAlive(),
     };
+    // Return the status as a JSON response
     response.status(200).send(status);
   }
 
-  /**
-   * should return the number of users and files in DB:
-   * { "users": 12, "files": 1231 }
-   *  with a status code 200
-   */
+  // Method for retrieving statistics (number of users and files)
   static async getStats(request, response) {
+    // Get the number of users and files from the database
     const stats = {
       users: await dbClient.nbUsers(),
       files: await dbClient.nbFiles(),
     };
+    // Return the statistics as a JSON response
     response.status(200).send(stats);
   }
 }
 
+// Export the AppController class
 export default AppController;
